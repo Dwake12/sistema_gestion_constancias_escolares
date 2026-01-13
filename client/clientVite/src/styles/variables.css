@@ -1,0 +1,52 @@
+:root{
+
+    /* 🎨 COLORES */
+    --color-bg: #f7f7f7;
+    --color-font: #5a5757ab;
+    --color-btn: #2463eb;
+    --color-btn-hover: #2463ebf1;
+    --color-font-btn: #fff;
+    --color-border-cards: #e6e3e3;
+    --color-row-table-hover: #e6e3e344;
+    --color-icon-buttonCard-blue: #4cbdf1;
+    --color-icon-buttonCard-light-blue: #e6f5fc;
+    --color-icon-buttonCard-yellow: #f7c762;
+    --color-icon-buttonCard-light-yellow: #fdf5e6;
+    --color-icon-buttonCard-green: #91f354;
+    --color-icon-buttonCard-light-green: #effde6;
+
+    /* 🔤 Tipografía */
+    --font-family: 'Poppins', sans-serif;
+    --font-xxs: 0.5rem;
+    --font-xs: 0.75rem;
+    --font-sm: 0.875rem;
+    --font-md: 1rem;
+    --font-lg: 1.25rem;
+    --font-xl: 1.5rem;
+    --font-xxl: 2rem;
+
+    /* 📏 Espaciados */
+    --space-xs: 0.2rem;
+    --space-sm: 0.4rem;
+    --space-md: 0.8rem;
+    --space-lg: 1.2rem;
+    --space-xl: 1.6rem;
+    --space-xxl: 2rem;
+
+    /* 📏 Padding */
+    --padding-header: 2.5rem 4rem;
+    --padding-dashboard-content: 2.5rem 4rem; 
+    --padding-table-rows-thead: 1rem 1rem;
+    --padding-table-rows-tbody: 1.6rem 1rem;
+    --padding-sm: 1rem 0.5rem;
+    --padding-md: 2.5rem 1rem;
+    --padding-lg: 2.3rem 2rem;
+    --padding-xl: 2.5rem 4rem;
+    --padding-xxl: 2.5rem 13rem;
+
+    /* Border radius */
+    --border-radius-icons: 15%;
+    --border-radius-button-cards: .5rem;
+    --border-radius-containers: .7rem;
+    --border-radius-header-table: .7rem .7rem 0 0;
+}
