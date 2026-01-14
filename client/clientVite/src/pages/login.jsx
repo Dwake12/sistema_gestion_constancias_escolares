@@ -4,41 +4,34 @@ import { useAuth } from '../context/AuthContext'
 import loginIcon from '../assets/login_icon.svg'
 import Input from '../components/ui/Input'
 import Icon from '../components/ui/icon.jsx'
-import Button from '../components/ui/button.jsx'
 
 import '../styles/styles_pages/login.css'
 
-/**
- * Página de Login
- * Si el usuario ya está autenticado, lo redirige al dashboard
- */
 function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-    const { user, login } = useAuth()
+
+    const { token, login } = useAuth()
     const navigate = useNavigate()
 
     // Si el usuario ya está autenticado, redirigir al dashboard
     useEffect(() => {
-        if (user) {
+        if (token) {
             navigate('/dashboard')
         }
-    }, [user, navigate])
+    }, [token, navigate])
 
-    function handleSubmit(e) {
-        e.preventDefault()
-        setError('')
-
-        const ok = login(username.trim(), password.trim())
-
-        if (!ok) {
-            setError('Usuario o clave incorrectos')
-            return
+    async function handleSubmit(e) {
+        e.preventDefault();
+        setError("");
+    
+        try {
+          await login(username.trim(), password.trim());
+        } catch (err) {
+          setError(err.message || "Usuario o clave incorrectos");
         }
-
-        navigate('/dashboard')
-    }
+      }
 
     return (
         <main className="container-login">

@@ -49,12 +49,13 @@ export default function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
     const [loadingAuth, setLoadingAuth] = useState(true)
+    
 
     useEffect(() => {
         const savedToken = localStorage.getItem("token")
         const savedUser = localStorage.getItem("user")
 
-        if(savedToken && savedToken) {
+        if(savedToken && savedUser) {
             setToken(savedToken)
             setUser(JSON.parse(savedUser))
         }
@@ -62,38 +63,39 @@ export default function AuthProvider({ children }) {
         setLoadingAuth(false)
     }, [])
 
-    /**
-     * Función para iniciar sesión
-     * @param {string} username - Nombre de usuario
-     * @param {string} password - Contraseña
-     * @returns {boolean} - true si el login fue exitoso, false si no
-     */
-    function login(username, password) {
-        // Validación simple (en producción deberías usar un backend)
-        if (username === "secretaria" && password === "12345") {
-            setUser({ name: "secretaria", role: "secretaria" });
-            return true
+    //Login
+    async function login(username, password) {
+        const res = await fetch(`${API_URL}/auth/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+        })
+        const data = await res.json()
+        console.log(data)
+
+        if(!res.ok){
+            throw new Error(data.message || "Error al iniciar sesión")
         }
 
-        if (username === "admin" && password === "1234") {
-            setUser({ name: "admin", role: "admin" })
-            return true
-        }
+        setUser(data.user)
+        setToken(data.token)
+        localStorage.setItem("user", JSON.stringify(data.user))
+        localStorage.setItem("token", data.token);
 
-        return false
+        return true
     }
 
-    /**
-     * Función para cerrar sesión
-     * Simplemente establece user a null
-     */
+    //Logout
     function logout() {
         setUser(null)
+        setToken(null)
+        localStorage.removeItem("user")
+        localStorage.removeItem("token")
     }
 
-    // El Provider "provee" estos valores a todos los componentes hijos
+    // Provider (Es el que se encarga de proveer las variables que estan en value a todo el proyecto para que se puedan a accer a ellas desde donde sea, siempre y cuando este envuelta en la etiqueta <AuthProvider>)
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, token, login, logout, loadingAuth }}>
             {children}
         </AuthContext.Provider>
     )
