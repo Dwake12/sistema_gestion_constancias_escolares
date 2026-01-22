@@ -1,7 +1,7 @@
-function Icon ({srcIcon, styleIcon}) {
+function Icon ({srcIcon, styleIcon, styleIconImg}) {
     return (
         <div className={`icon ${styleIcon || ''}`}>
-            <img className="img-icon" src={srcIcon} alt="Logo" />
+            <img className={styleIconImg} src={srcIcon} alt="Logo" />
         </div>
     )
 }

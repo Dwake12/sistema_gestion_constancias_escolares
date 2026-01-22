@@ -17,9 +17,24 @@
 
 .form-newRequest{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     padding: var(--padding-lg);
     gap: var(--space-lg);
+}
+
+.container-data{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem 0;
+    gap: var(--space-lg);
+}
+
+.student-data-container{
+    border-bottom: 1px solid var(--color-border-cards);
+}
+
+.payment-data-container{
+    border-bottom: 1px solid var(--color-border-cards);
 }
 
 .container-footer-form{

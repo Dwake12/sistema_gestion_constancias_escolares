@@ -3,6 +3,7 @@ import Login from './pages/login'
 import Dashboard from './pages/Dashboard'
 import NewRequest from './pages/newRequest'
 import ViewRequest from './pages/viewRequest'
+import UserManagement from './pages/userManagement'
 import ProtectedRoute from './components/routes/ProtectedRoute'
 
 function App() {
@@ -39,6 +40,15 @@ function App() {
         element={
           <ProtectedRoute>
             <ViewRequest />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route 
+        path='/userManagement'
+        element={
+          <ProtectedRoute>
+            <UserManagement />
           </ProtectedRoute>
         }
       />

@@ -71,7 +71,6 @@ export default function AuthProvider({ children }) {
             body: JSON.stringify({ username, password }),
         })
         const data = await res.json()
-        console.log(data)
 
         if(!res.ok){
             throw new Error(data.message || "Error al iniciar sesión")

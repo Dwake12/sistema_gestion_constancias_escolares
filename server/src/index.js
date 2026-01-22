@@ -3,6 +3,7 @@ const cors = require("cors") // <-- Esto es importante ya que permite a mi front
 require("dotenv").config() // <-- esto carga mi archivo .env basicamente lee mis variables secretas
 const pool = require("./db/pool") // <-- Aqui nos estamos trayendo el puente que nos conecta a la BD/supabase
 const authRoutes = require("./routes/auth.routes")
+const usersRoutes = require("./routes/users.routes") // <-- Rutas para gestionar usuarios
 
 const app = express() // <-- Aqui creamos el servidor app es mi API
 
@@ -28,6 +29,7 @@ app.get("/db-test", async (req, res) => { // <-- Creamos la ruta para probar la 
 })
 
 app.use("/auth", authRoutes)
+app.use("/users", usersRoutes) // <-- Registramos las rutas de usuarios en /users
 
 // NOTA:
 // req de (REQUEST): Es el objeto enviado por el cliente (navedor, APP) al servidor, el cual contiene informacion como la URL, el metodo de la peticion o request (GET, POST, PUT, DELETE)

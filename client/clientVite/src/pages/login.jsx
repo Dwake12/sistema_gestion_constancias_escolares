@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import loginIcon from '../assets/login_icon.svg'
 import Input from '../components/ui/Input'
 import Icon from '../components/ui/icon.jsx'
+import Button from '../components/ui/button.jsx'
 
 import '../styles/styles_pages/login.css'
 
@@ -11,6 +12,7 @@ function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const { token, login } = useAuth()
     const navigate = useNavigate()
@@ -25,21 +27,28 @@ function Login() {
     async function handleSubmit(e) {
         e.preventDefault();
         setError("");
+        setIsLoading(true);
     
         try {
           await login(username.trim(), password.trim());
         } catch (err) {
           setError(err.message || "Usuario o clave incorrectos");
+        } finally {
+          setIsLoading(false);
         }
       }
 
     return (
         <main className="container-login">
             <div className="card-login">
-                <Icon
-                    srcIcon={loginIcon}
-                    styleIcon="login-icon"
-                />
+
+                <div className='container-icon-login'>
+                    <Icon
+                        srcIcon={loginIcon}
+                        styleIcon="login-icon"
+                    />
+                </div>
+                
                 <div className="card__header">
                     <h2>Sistema de Constancias</h2>
                     <p>Introduce tus credenciales para acceder</p>
@@ -61,9 +70,14 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    {error && <p style={{ color: 'crimson' }}>{error}</p>}
+                    {error && <p style={{ color: 'rgba(193, 33, 33, 0.72)', fontSize: "0.9rem"}}>{error}</p>}
 
-                    <button className="btn" type="submit">Acceder</button>
+                    <Button 
+                        styleButton="button-login"
+                        label="Acceder"
+                        type="submit"
+                        loading={isLoading}
+                    />
                 </form>
             </div>
         </main>

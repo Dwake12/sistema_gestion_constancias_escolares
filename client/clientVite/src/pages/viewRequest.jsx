@@ -6,16 +6,15 @@ import Table from '../components/ui/table'
 
 import '../styles/styles_pages/viewRequest.css'
 
+const filterStatus = [
+    { value: 'all', label: 'Todas' },
+    { value: 'pending', label: 'Pendientes' },
+    { value: 'approved', label: 'Aprobadas' },
+    { value: 'rejected', label: 'Rechazadas' }
+]
+
 function ViewRequest() {
     const [selectedFilter, setSelectedFilter] = useState('')
-
-    const filterStatus = [
-        { value: 'all', label: 'Todas' },
-        { value: 'pending', label: 'Pendientes' },
-        { value: 'approved', label: 'Aprobadas' },
-        { value: 'rejected', label: 'Rechazadas' }
-    ]
-
 
     const handleFilterChange = (e) => {
         setSelectedFilter(e.target.value)
@@ -32,7 +31,7 @@ function ViewRequest() {
         { header: "Acciones", accessor: "actions" }
       ]
 
-    // DATA TEMPORAL DE LA TABLA - Datos ficticios para pruebas
+    // DATA TEMPORAL DE LA TABLA - Datos ficticios para pruebas (BORRAR LUEGO)
     const dataPrueba = [
         {
             name: "Juan Pérez",

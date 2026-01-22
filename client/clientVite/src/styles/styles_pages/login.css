@@ -9,9 +9,9 @@
 
 .card-login {
     width: 100%;
-    max-width: 455px;
+    max-width: 28.5rem;
     height: 100%;
-    max-height: 470px;
+    max-height: 30rem;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -23,13 +23,17 @@
     box-shadow: 0.2px 0.2px 4px rgba(0, 0, 0, 0.10);
 }
 
+.container-icon-login{
+    height: 5rem;
+}
+
 .card__header {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--font-xxs);
     margin-bottom: var(--space-xl);
-    margin-top: var(--space-xl);
+    margin-top: var(--space-sm);
 }
 
 .card__header h2 {
@@ -46,17 +50,4 @@
     display: flex;
     flex-direction: column;
     gap: var(--font-lg);
-}
-
-.btn {
-    padding: var(--space-md);
-    background-color: var(--color-btn);
-    color: var(--color-font-btn);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: var(--color-btn-hover);
 }

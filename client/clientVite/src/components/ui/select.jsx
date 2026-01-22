@@ -1,4 +1,5 @@
 function Select({
+    label,
     placeholder = 'Selecciona una opción',
     options = [],
     value,
@@ -8,6 +9,8 @@ function Select({
     className = ''
 }) {
     return (
+        <label>
+            {label}
             <select
                 id={id || name}
                 name={name}
@@ -23,6 +26,7 @@ function Select({
                     </option>
                 ))}
             </select>
+        </label>
     )
 }
 

@@ -21,6 +21,43 @@ input {
 .button{
     background-color: white;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-loading {
+    opacity: 0.8;
+    cursor: default;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.button .spinner {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: rgba(255, 255, 255, 1);
+    margin-right: 0.5rem;
+    display: inline-block;
+    animation: button-spin 0.6s linear infinite;
+    flex-shrink: 0;
+}
+
+.button .button-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+}
+
+@keyframes button-spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .button-header {
@@ -38,6 +75,16 @@ input {
     border: none;
 }
 
+.button-header:hover .icon-button {
+    filter: brightness(0) invert(1);
+}
+
+.icon-button {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.7rem;
+}
+
 .button-form {
     width: 10rem;
     padding: var(--space-md);
@@ -52,6 +99,19 @@ input {
     background-color: white;
     border: 1px solid var(--color-btn);
     color: var(--color-btn);
+}
+
+.button-login{
+    padding: var(--space-md);
+    background-color: var(--color-btn);
+    color: var(--color-font-btn);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-login:hover{
+    background-color: var(--color-btn-hover);
 }
 
 /* ICONS */
@@ -139,6 +199,14 @@ input {
     border: 1px solid var(--color-icon-buttonCard-blue);
 }
 
+/* .first-card-button:hover .first-card-icon {
+    background-color: var(--color-icon-buttonCard-blue);
+} */
+
+/* .first-card-button:hover .first-card-icon-img{
+    filter: brightness(0) invert(1);
+} */
+
 .second-card-button:hover{
     border: 1px solid var(--color-icon-buttonCard-yellow);
 }
@@ -200,10 +268,9 @@ input {
 /* SELECT */
 select{
     padding: var(--space-md);
-    border: 1px solid var(--color-border-cards);
-    border-radius: var(--border-radius-containers);
+    border: 1px solid #ccc;
+    border-radius: 4px;
     font-size: var(--font-sm);
-    font-family: var(--font-family);
     color: var(--color-font);
     background-color: white;
     transition: border-color 0.2s ease;
@@ -247,4 +314,30 @@ tbody tr{
 
 tbody tr:hover{
     background-color: var(--color-row-table-hover);
+}
+
+/* LOADING SPINNER */
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: var(--space-md);
+}
+
+.loading-container .spinner {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 0, 0, 0.1);  /* Color más oscuro para tabla */
+    border-top-color: var(--color-btn);     /* Usa el color del botón */
+    display: inline-block;
+    animation: button-spin 0.6s linear infinite;
+    flex-shrink: 0;
+    margin-right: 0;  /* Sin margen porque el gap lo maneja el contenedor */
+}
+
+.loading-message {
+    font-size: var(--font-sm);
+    color: var(--color-font);
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/style-records.css">
+</head>
+<body>
+
+    <header class="header">
+      <img class="logo-mppe-letterhead" src="../assets/logo-mppe.png" alt="Logo MPPE">
+      <div class="letterhead">
+          <p class="school-name-letterhead font-md">Unidad Educativa Colegio "Maestro Jose Marti"</p>
+          <p class="school-sub-letterhead font-s">Inscrito en el Ministerio del Poder Popular para la Educación</p>
+          <p class="school-adress-letterhead font-s">Calle Colina Esquinas con Calle Maparari y Churuguara Telef: (0268) 2530956</p>
+          <p class="school-adress-letterhead font-s">Coro; Estado Falcon Rif: J08527407-3</p>
+      </div>
+      <img class="logo-uecolegiomjm-letterhead" src="../assets/logo-colegio-mjm.png" alt="Logo U.E Colegio Maestro Jose Marti">
+    </header>
+  
+    <main class="page">
+        <h1 class="doc-tittle">{{doc-heading}}</h1>
+  
+        <section class="content">
+          {{content}}
+        </section>
+  
+        <footer class="footer">
+            <p class="inssue-line-footer">
+              Constancia que se expide a petición de parte interesada en Santa Ana de Coro el {{day}} del mes
+              de {{month}} de {{year}}.
+            </p>
+  
+            <div class="signature-block-footer">
+                <div class="signature-footer">
+                    <p class="sign-name">MSc. Alicia Escorche</p>
+                    <p class="sign-title">Directora</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

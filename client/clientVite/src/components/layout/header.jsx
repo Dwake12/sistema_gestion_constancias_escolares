@@ -10,12 +10,13 @@ function Header({ page }) {
     const { user, logout } = useAuth()
     const navigate = useNavigate()
 
+    // Funcion para cerrar sesion
     function handleLogout() {
         logout() // Limpia el estado del usuario (CERRAR SESION)
         navigate('/login') // Redirige al login
     }
-
-    function handleHome() {
+    // Funcion para regresar al Dashboard
+    function handleDashboard() {
         navigate('/dashboard') // Redirige al dashboard
     }
 
@@ -28,21 +29,23 @@ function Header({ page }) {
                 />
                 <div className="header-text">
                     <h2>Sistema de Constancias</h2>
-                    <p>{user.name}</p>
+                    <p>{`Usuario: ${user.role}`}</p>
                 </div>
             </div>
             <div className="header-logout">
                 {page === 'dashboard' ? (
                     <Button
+                        iconButton={page}
                         label="Cerrar Sesion"
                         styleButton="button-header"
                         onClick={handleLogout}
                     />
                 ) : (
                     <Button
+                        iconButton={page}
                         label="Volver"
                         styleButton="button-header"
-                        onClick={handleHome}
+                        onClick={handleDashboard}
                     />
                 )}
             </div>

@@ -1,0 +1,23 @@
+.container-main-content-userManagement{
+    padding: var(--padding-xxl);
+}
+
+.container-list-users{
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius-containers);
+    border: 1px solid var(--color-border-cards);
+}
+
+.container-list-tittle-users{
+    width: 100%;
+    padding: var(--padding-lg);
+    border-bottom: 1px solid var(--color-border-cards);
+}
+
+.table-users{
+    padding: var(--padding-lg);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
