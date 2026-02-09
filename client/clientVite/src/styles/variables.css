@@ -4,16 +4,20 @@
     --color-bg: #f7f7f7;
     --color-font: #5a5757ab;
     --color-btn: #2463eb;
-    --color-btn-hover: #2463ebf1;
+    --color-btn-hover: #2463ebd1;
     --color-font-btn: #fff;
     --color-border-cards: #e6e3e3;
-    --color-row-table-hover: #e6e3e344;
+    --color-row-table-hover: #e6e3e338;
     --color-icon-buttonCard-blue: #4cbdf1;
     --color-icon-buttonCard-light-blue: #e6f5fc;
     --color-icon-buttonCard-yellow: #f7c762;
     --color-icon-buttonCard-light-yellow: #fdf5e6;
     --color-icon-buttonCard-green: #91f354;
     --color-icon-buttonCard-light-green: #effde6;
+    --color-btn-action-red: #dc3545;
+    --color-btn-action-red-hover: #c82333;
+    --color-btn-action-blue: #2463eb;
+    --color-btn-action-blue-hover: #1d52c4;
 
     /* 🔤 Tipografía */
     --font-family: 'Poppins', sans-serif;
@@ -36,7 +40,7 @@
     /* 📏 Padding */
     --padding-header: 2.5rem 4rem;
     --padding-dashboard-content: 2.5rem 4rem; 
-    --padding-table-rows-thead: 1rem 1rem;
+    --padding-table-rows-thead: 0.8rem;
     --padding-table-rows-tbody: 1.6rem 1rem;
     --padding-sm: 1rem 0.5rem;
     --padding-md: 2.5rem 1rem;

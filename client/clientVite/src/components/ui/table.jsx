@@ -1,6 +1,6 @@
 import Loading from "./loading"
 
-function Table({ columns = [], data = [], loading }) {
+function Table({ columns = [], data = [], loading, loadingMessage = 'Cargando...' }) {
     return (
         <table>
             <thead>
@@ -16,9 +16,11 @@ function Table({ columns = [], data = [], loading }) {
                         <tr key={index}>
                             {columns.map((col, colIndex) => (
                                 <td key={colIndex}>
-                                    {typeof row[col.accessor] === 'boolean' 
-                                    ? row[col.accessor] ? 'Sí' : 'No'  // o 'Activo'/'Inactivo'
-                                    : row[col.accessor]
+                                    {col.render
+                                        ? col.render(row)
+                                        : typeof row[col.accessor] === 'boolean'
+                                            ? row[col.accessor] ? 'Sí' : 'No'
+                                            : row[col.accessor]
                                     }
                                 </td>
                             ))}
@@ -29,7 +31,7 @@ function Table({ columns = [], data = [], loading }) {
                         <td colSpan={columns.length} style={{ textAlign: 'center' }}>
                             {loading ? 
                             <Loading 
-                                message="Cargando usuarios..."
+                                message={loadingMessage}
                             /> : 
                             'No hay datos para cargar'}
                         </td>

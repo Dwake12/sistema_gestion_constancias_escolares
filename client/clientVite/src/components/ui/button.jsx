@@ -1,8 +1,8 @@
 import logoutIcon from '../../assets/logout_icon_black.svg'
 import backRow from '../../assets/back_row_icon_black.svg'
 
-function Button({ iconButton, label, styleButton, onClick, type = "button", loading = false, disabled, ...rest }) {
-
+function Button({ iconButton, iconSrc, label, styleButton, onClick, type = "button", loading = false, disabled, ...rest }) {
+    const iconToShow = iconSrc ?? (iconButton === "dashboard" ? logoutIcon : iconButton ? backRow : null)
     return (
         <button
             className={`button ${styleButton || ''} ${loading ? 'button-loading' : ''}`}
@@ -11,12 +11,13 @@ function Button({ iconButton, label, styleButton, onClick, type = "button", load
             disabled={loading || disabled}
             {...rest}
         >
-
-            {iconButton && <img src={iconButton === "dashboard" ? logoutIcon : backRow} alt="icon-button" className='icon-button' />}
+            {iconToShow && !loading && <img src={iconToShow} alt="icon-button" className="icon-button" />}
             {loading && <span className="spinner" />}
-            <span className="button-label">
-                {loading ? 'Cargando...' : label}
-            </span>
+            {(label != null && label !== '') && (
+                <span className="button-label">
+                    {loading ? 'Cargando...' : label}
+                </span>
+            )}
         </button>
     );
 }

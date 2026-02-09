@@ -9,8 +9,6 @@ import perfilIcon from '../assets/perfil_icon.svg'
 import '../styles/styles_pages/dashboard.css'
 
 function Dashboard() {
-    // Obtenemos el usuario del contexto de autenticación
-    // Ya sabemos que existe porque ProtectedRoute lo verificó
     const { user } = useAuth()
     const navigate = useNavigate()
 
@@ -27,6 +25,82 @@ function Dashboard() {
         }
     }
 
+    const renderButtonsByRole = () => {
+        switch(user?.role) {
+            case 'root':
+                return (
+                    <>
+                        <CardButton
+                            icon={createIcon}
+                            tittle="Nueva solicitud"
+                            description="Genera una nueva solicitud de constancia"
+                            styleCardButton="first-card-button"
+                            iconStyle="first-card-icon"
+                            iconStyleImg="first-card-icon-img"
+                            onClick={() => handleNavigation('newRequest')}
+                        />
+                        <CardButton
+                            icon={viewIcon}
+                            tittle="Ver solicitudes"
+                            description="Administrar y procesar solicitudes"
+                            styleCardButton="second-card-button"
+                            iconStyle="second-card-icon"
+                            iconStyleImg="second-card-icon-img"
+                            onClick={() => handleNavigation('viewRequest')}
+                        />
+                        <CardButton
+                            icon={perfilIcon}
+                            tittle="Gestion de usuarios"
+                            description="Administrar usuarios y roles"
+                            styleCardButton="third-card-button"
+                            iconStyle="third-card-icon"
+                            iconStyleImg="third-card-icon-img"
+                            onClick={() => handleNavigation('userManagement')}
+                        />
+                    </>
+                )
+            case 'admintrator':
+                return (
+                    <>
+                        <CardButton
+                            icon={createIcon}
+                            tittle="Nueva solicitud"
+                            description="Genera una nueva solicitud de constancia"
+                            styleCardButton="first-card-button"
+                            iconStyle="first-card-icon"
+                            iconStyleImg="first-card-icon-img"
+                            onClick={() => handleNavigation('newRequest')}
+                        />
+                        <CardButton
+                            icon={viewIcon}
+                            tittle="Ver solicitudes"
+                            description="Administrar y procesar solicitudes"
+                            styleCardButton="second-card-button"
+                            iconStyle="second-card-icon"
+                            iconStyleImg="second-card-icon-img"
+                            onClick={() => handleNavigation('viewRequest')}
+                        />
+                    </>
+                )
+            case 'secretariat':
+                return (
+                    <>
+                        <CardButton
+                            icon={createIcon}
+                            tittle="Nueva solicitud"
+                            description="Genera una nueva solicitud de constancia"
+                            styleCardButton="first-card-button"
+                            iconStyle="first-card-icon"
+                            iconStyleImg="first-card-icon-img"
+                            onClick={() => handleNavigation('newRequest')}
+                        />
+                    </>
+                )
+            default:
+                return null
+        }
+    }
+
     return (
         <main className='container-dashboard'>
             <Header
@@ -38,34 +112,8 @@ function Dashboard() {
                     <p>{user.role}</p>
                 </div>
                 <div className='container-dashboard-cardsButtons'>
-                    <CardButton
-                        icon={createIcon}
-                        tittle="Nueva solicitud"
-                        description="Genera una nueva solicitud de constancia"
-                        styleCardButton="first-card-button"
-                        iconStyle="first-card-icon"
-                        iconStyleImg="first-card-icon-img"
-                        onClick={() => handleNavigation('newRequest')}
-                    />
-                    <CardButton
-                        icon={viewIcon}
-                        tittle="Ver solicitudes"
-                        description="Administrar y procesar solicitudes"
-                        styleCardButton="second-card-button"
-                        iconStyle="second-card-icon"
-                        iconStyleImg="second-card-icon-img"
-                        onClick={() => handleNavigation('viewRequest')}
-                    />
-                    <CardButton
-                        icon={perfilIcon}
-                        tittle="Gestion de usuarios"
-                        description="Administrar usuarios y roles"
-                        styleCardButton="third-card-button"
-                        iconStyle="third-card-icon"
-                        iconStyleImg="third-card-icon-img"
-                        onClick={() => handleNavigation('userManagement')}
-                    />
-                </div>
+                    {renderButtonsByRole()}
+                </div>  
             </div>
         </main>
     )

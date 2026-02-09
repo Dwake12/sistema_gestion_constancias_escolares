@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { toast } from 'sonner'
 import loginIcon from '../assets/login_icon.svg'
 import Input from '../components/ui/Input'
 import Icon from '../components/ui/icon.jsx'
@@ -31,8 +32,9 @@ function Login() {
     
         try {
           await login(username.trim(), password.trim());
+          toast.success("Inicio de sesión exitoso");
         } catch (err) {
-          setError(err.message || "Usuario o clave incorrectos");
+          toast.error(err.message || "Usuario o clave incorrectos");
         } finally {
           setIsLoading(false);
         }
@@ -69,8 +71,6 @@ function Login() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-
-                    {error && <p style={{ color: 'rgba(193, 33, 33, 0.72)', fontSize: "0.9rem"}}>{error}</p>}
 
                     <Button 
                         styleButton="button-login"

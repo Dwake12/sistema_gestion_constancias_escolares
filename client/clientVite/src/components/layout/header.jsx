@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { toast } from 'sonner'
 import Icon from '../../components/ui/icon.jsx'
 import Button from '../../components/ui/button.jsx'
 import headerIcon from '../../assets/login_icon.svg'
@@ -14,6 +15,7 @@ function Header({ page }) {
     function handleLogout() {
         logout() // Limpia el estado del usuario (CERRAR SESION)
         navigate('/login') // Redirige al login
+        toast.success("Sesión cerrada");
     }
     // Funcion para regresar al Dashboard
     function handleDashboard() {

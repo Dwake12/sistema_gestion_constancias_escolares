@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 import Header from '../components/layout/header'
 import Table from '../components/ui/table'
+import Button from '../components/ui/button'
+import deleteIcon from '../assets/delete_icon.svg'
 
 import '../styles/styles_pages/userManagement.css'
 
@@ -11,6 +13,18 @@ const headerTable = [
     { header: "Usuario", accessor: "username" },
     { header: "Rol", accessor: "role" },
     { header: "Activo", accessor: "is_active" },
+    {
+        header: "Acciones",
+        accessor: "actions",
+        render: (row) => (
+            <Button
+                iconSrc={deleteIcon}
+                styleButton="button-action-red"
+                onClick={() => console.log('Eliminar usuario', row)}
+                title="Eliminar"
+            />
+        )
+    },
 ]
 
 function UserManagement () {

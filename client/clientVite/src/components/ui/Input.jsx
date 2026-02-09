@@ -1,4 +1,4 @@
-function Input({label, value, onChange, type, styleInput}) {
+function Input({label, value, onChange, type, styleInput, name}) {
     return (
         <label className={`input ${styleInput || ''}`}> 
             {label}
@@ -6,6 +6,7 @@ function Input({label, value, onChange, type, styleInput}) {
                 type={type}
                 value={value}
                 onChange={onChange}
+                name={name}
                 autoFocus
             />
         </label>
